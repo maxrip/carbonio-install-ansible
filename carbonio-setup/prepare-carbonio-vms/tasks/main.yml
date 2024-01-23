@@ -3,4 +3,6 @@
   - import_tasks: set-repos.yml
   - import_tasks: set-os.yml
   - import_tasks: update-os.yml
+  #- import_tasks: disable-ipv6.yml
+  - import_tasks: configure-firewall.yml
   - import_tasks: minimize-swap.yml

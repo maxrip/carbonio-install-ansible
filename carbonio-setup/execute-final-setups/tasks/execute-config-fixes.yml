@@ -64,6 +64,25 @@
     tags:
       - fix-config
 
+  - name: Create Postgres backup folder
+    become: true
+    file:
+      path: /opt/zextras-psql-bck
+      state: directory
+    when: inventory_hostname in groups["postgresServers"] and ansible_os_family == "Debian"
+    tags:
+      - fix-config
+      
+  - name: Modify Postgres autobackup config
+    become: true
+    replace:
+      path: /etc/default/autopostgresqlbackup
+      regexp: "/var/lib/autopostgresqlbackup"
+      replace: "/opt/zextras-psql-bck"
+    when: inventory_hostname in groups["postgresServers"] and ansible_os_family == "Debian"
+    tags:
+      - fix-config
+
   - name: Manage Videoserver password
     ansible.builtin.set_fact:
        carbonio_videoserver_password: "{{ lookup('ansible.builtin.password', inventory_file + '_videoserver_password',  chars=['ascii_letters', 'digits'], length=8) }}"

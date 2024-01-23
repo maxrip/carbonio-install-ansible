@@ -1,3 +1,46 @@
 ---
 # vars file for prepare-carbonio-vms
+repo_key: 52FD40243E584A21
 
+
+common_utils_packages_ubuntu:
+  - mc
+  - libgmp10
+  - libaio1
+  - sysstat
+  - fontconfig
+  - dos2unix
+  - ncdu
+  - ccze
+  - figlet
+  - atop
+  - bash-completion
+  - nmon
+  - telnet
+  - curl
+  - wget
+  - netcat
+  - tcpdump
+  - sysstat
+  - nmap
+  - jq
+  - net-tools
+  - python3-psycopg2
+
+common_utils_packages_rhel:
+   - mc
+   - sysstat
+   - fontconfig
+   - dos2unix
+   - bash-completion
+   - open-vm-tools
+   - telnet
+   - curl
+   - wget
+   - nmap-ncat
+   - tcpdump
+   - sysstat
+   - nmap
+   - jq
+   - net-tools
+   - python3-psycopg2  

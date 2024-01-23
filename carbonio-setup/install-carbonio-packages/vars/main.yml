@@ -28,6 +28,7 @@
   postgres_packages_ubuntu: 
     - python3-psycopg2
     - postgresql-16
+    - autopostgresqlbackup
 
   postgres_packages_rhel: 
     - python38-psycopg2
@@ -79,6 +80,18 @@
     
   prometheus_packages: 
     - carbonio-prometheus
+
+  workstream_packages:
+    - carbonio-message-dispatcher
+    - carbonio-message-broker
+    - carbonio-ws-collaboration
+    - carbonio-ws-collaboration-ui
+  
+  message_dispatcher_dbconnectors_packages:
+    - carbonio-message-dispatcher-db
+
+  ws_collaboration_dbconnectors_packages:
+    - carbonio-ws-collaboration-db
 
   grafana_packages:
     - grafana 
