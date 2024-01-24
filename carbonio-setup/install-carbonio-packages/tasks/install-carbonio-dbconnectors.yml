@@ -31,6 +31,15 @@
     tags:
       - install-carbonio-dbconnectors
 
+  - name: Install tasks db connector Ubuntu
+    become: true
+    apt: name={{ item }} state=present
+    with_items:
+      - "{{ task_dbconnectors_packages }}"
+    when: ansible_os_family == "Debian" and inventory_hostname in groups["dbsConnectorServers"] and groups['taskServers'] | length > 0
+    tags:
+      - install-carbonio-dbconnectors
+
   - name: Install message dispatcher db connector Ubuntu
     become: true
     apt: name={{ item }} state=present
@@ -39,7 +48,6 @@
     when: ansible_os_family == "Debian" and inventory_hostname in groups["dbsConnectorServers"] and groups['WorkStreamServers'] | length > 0 
     tags:
       - install-carbonio-dbconnectors
-
 
   - name: Install ws collaboration db connector Ubuntu
     become: true
@@ -50,14 +58,6 @@
     tags:
       - install-carbonio-dbconnectors
 
-  - name: Install tasks db connector Ubuntu
-    become: true
-    apt: name={{ item }} state=present
-    with_items:
-      - "{{ task_dbconnectors_packages }}"
-    when: ansible_os_family == "Debian" and inventory_hostname in groups["dbsConnectorServers"] and groups['taskServers'] | length > 0
-    tags:
-      - install-carbonio-dbconnectors
 
 ##### RHEL
 
@@ -97,22 +97,12 @@
     tags:
       - install-carbonio-dbconnectors
 
-
   - name: Install ws collaboration db connector RHEL
     become: true
     yum: name={{ item }} state=present
     with_items:
       - "{{ docs_dbconnectors_packages }}"
     when: (ansible_os_family == "RedHat" or ansible_os_family == "CentOS") and inventory_hostname in groups["dbsConnectorServers"] and groups['WorkStreamServers'] | length > 0
-    tags:
-      - install-carbonio-dbconnectors
-
-  - name: Install tasks db connector Ubuntu
-    become: true
-    apt: name={{ item }} state=present
-    with_items:
-      - "{{ task_dbconnectors_packages }}"
-    when: ansible_os_family == "Debian" and inventory_hostname in groups["dbsConnectorServers"] and groups['taskServers'] | length > 0
     tags:
       - install-carbonio-dbconnectors
       
