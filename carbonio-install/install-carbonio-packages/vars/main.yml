@@ -51,13 +51,13 @@
     - carbonio-admin-console-ui
       
   preview_packages: 
-    - carbonio-preview
+    - carbonio-preview{{carbonio_version}}
 
   task_packages:
-    - carbonio-tasks
+    - carbonio-tasks{{carbonio_version}}
     
   files_packages: 
-    - carbonio-files  
+    - carbonio-files{{carbonio_version}}
     - carbonio-user-management
     
   files_ui_packages: 
@@ -69,7 +69,7 @@
   
   docs_packages: 
     - carbonio-docs-editor
-    - carbonio-docs-connector
+    - carbonio-docs-connector{{carbonio_version}}
   
   videoserver_packages: 
     - carbonio-videoserver

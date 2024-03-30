@@ -116,7 +116,7 @@
        - sed
        - -i
        - 's/scram-sha-256/md5/g'
-       - {{ ubuntu_postgresql_conf_dir }}pg_hba.conf
+       - "{{ ubuntu_postgresql_conf_dir }}pg_hba.conf"
     become: yes
     become_user: postgres
     when: ansible_os_family == "Debian" and inventory_hostname in groups["postgresServers"]
