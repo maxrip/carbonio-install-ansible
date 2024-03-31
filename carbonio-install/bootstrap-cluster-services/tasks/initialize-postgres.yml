@@ -111,8 +111,12 @@
       - initialize-postgres
 
   - name: "Change scram-sha-256 to md5"
-    ansible.builtin.shell:
-      cmd: "sed -i 's/scram-sha-256/md5/g' {{ ubuntu_postgresql_conf_dir }}pg_hba.conf"
+    ansible.builtin.command: 
+      argv: 
+       - sed
+       - -i
+       - 's/scram-sha-256/md5/g'
+       - {{ ubuntu_postgresql_conf_dir }}pg_hba.conf
     become: yes
     become_user: postgres
     when: ansible_os_family == "Debian" and inventory_hostname in groups["postgresServers"]
